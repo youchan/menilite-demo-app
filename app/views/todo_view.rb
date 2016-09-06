@@ -5,12 +5,13 @@ class TodoView
   include Hyalite::Component::ShortHand
 
   def initial_state
+    Todo.fetch {|todo_list| set_state(todo_list: todo_list) }
     { todo_list: [] }
   end
 
   def handle_key_press(evt)
     if evt.code == 13
-      @state[:todo_list] << Todo.new(description: @refs[:description].value)
+      @state[:todo_list] << Todo.create(description: @refs[:description].value)
       @refs[:description].value = ''
       force_update
     end
