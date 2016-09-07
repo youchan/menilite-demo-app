@@ -10,4 +10,10 @@ class User < Menilite::Model
     self.password = BCrypt::Password.create(password)
     self.save
   end
+
+  if_server do
+    def auth(password)
+      BCrypt::Password.new(self.password) == password
+    end
+  end
 end
