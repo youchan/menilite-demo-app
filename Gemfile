@@ -5,7 +5,7 @@ gem 'sinatra-contrib'
 gem 'thin'
 
 gem 'opal-haml'
-gem 'hyalite'
+gem 'hyalite', path: '../../hyalite'
 gem 'menilite', path: '../../menilite'
 
 gem 'rake'

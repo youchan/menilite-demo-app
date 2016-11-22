@@ -6,6 +6,8 @@ class User < Menilite::Model
   field :name
   field :password
 
+  validation :name, presence: true
+
   action :signup, on_create: true do |password|
     self.password = BCrypt::Password.create(password)
     self.save

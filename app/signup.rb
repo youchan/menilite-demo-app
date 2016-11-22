@@ -9,6 +9,7 @@ class AppView
 
   def signup
     user = User.new(name: @refs[:name].value)
+    user.validate_all
     user.signup(@refs[:password].value) do
       `window.location = '/'`
     end
